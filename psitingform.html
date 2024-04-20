@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+      }
+    #imgbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+}
+label{
+    background-color: yellow;
+    border: solid black;
+    height: 25px;
+    width: 50px;
+    position: absolute;
+    top: 300px;
+    right: 500px;
+    border-radius: 10%;
+}
+</style>
+<body>
+   <form action="">
+    <div id="imgbox"></div>
+    <input type="file" accept="image/*" name="image" id="file" onchange="loadfile(event)" style="display: none;">
+    <label for="file">Upload</label>
+    <input type="text" name="firstname" id="firstname" placeholder="username" maxlength="50">maxle
+   </form>
+</body>
+<script>
+    var imgbox = document.getElementById("imgbox")
+    var loadfile = function(event){
+        imgbox.style.backgroundImage = "url(" +URL.createObjectURL(event.target.files[0]) + ")"
+    }
+</script>
+</html>

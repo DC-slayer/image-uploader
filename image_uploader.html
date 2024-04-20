@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="image_uploader.css">
+    <link rel="icon" href="devchallenges.png">
+    <title>Image-Uploader</title>
+</head>
+<body>
+    <header></header>
+    <div class="box">
+       <span id="upload"> Upload your image </span><br>
+        <span id="file">File should be jpeg, png...</span> <br>
+        <span id="drag">
+            <span id="drag2">
+                <img src="image.svg" alt="image icon">
+                Drag & Drop your image here</span>
+        </span> <br>
+        <span id="or">Or</span>
+        <input type="file" accept="image/*" name="image" id="filed" onchange="loadfile(event)"  style="display: none;" >
+        <label for="filed">Choose a file</label>
+        <div id="input"></div>
+        <label id="label" for="input">Copy</label>
+    </div>
+    <footer> Philip Joe Yakubu</footer>
+    <div id="bar"><span id="fbar">Uploading...</span></div>
+    <div id="myProgress">
+        <div id="myBar"></div>
+    </div>
+</body>
+</html>
+<script>
+    var gone = document.getElementById("drag2");
+    var drag = document.getElementById("drag");
+    var bar = document.getElementById("bar");
+    var inp = document.getElementById("input");
+    var progress = document.getElementById("myProgress")
+    var copyButton = document.getElementById("label")
+    var loadfile = function(event){
+        bar.style.display = "block";
+        progress.style.display = "block";
+        var elem = document.getElementById("myBar");
+        var width = 1;
+        var id = setInterval(frame, 10);
+
+        function frame() {
+            if (width >= 100) {
+                clearInterval(id);
+                bar.style.display = "none";
+                progress.style.display = "none";
+                drag.style.backgroundImage = "url(" +URL.createObjectURL(event.target.files[0]) + ")"; 
+                drag.style.border = "none";
+                gone.style.display = "none";
+                inp.style.display = "flex";
+                copyButton.style.display = "flex";
+                inp.innerHTML = " " + URL.createObjectURL(event.target.files[0]) + " ";
+                document.getElementById("label").addEventListener("click", function() {
+  var copyText = URL.createObjectURL(event.target.files[0]);
+
+  navigator.clipboard.writeText(copyText)
+    .then(function() {
+      alert("Text copied to clipboard: " + copyText);
+    })
+    .catch(function(error) {
+      alert("Failed to copy text: " + error);
+    });
+});
+                drag.reset();
+            } else {
+                width++;
+                elem.style.width = width + "%";
+            }
+        }
+        
+    };
+</script>

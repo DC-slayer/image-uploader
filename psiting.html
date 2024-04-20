@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="psiting.css" type="text/css">
+    <link rel="icon" href="./Untitled.png" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        $(document).ready(function(){
+            $('#icon').click(function(){
+                $('ul').toggleClass('show');
+            });
+        });
+        </script>
+    
+</head>
+<body>
+   <header>
+       <label>P-SITING</label>
+    <nav> 
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Feedback</li>
+            <li>Help</li>
+            <li>T&C</li>
+            <li>Log In</li>
+            <li onclick="myfunc1()">Sign Up</li>
+        </ul>
+        <label id="icon">
+            <i class="fa-solid fa-bars"></i>
+        </label>
+    </nav>
+   </header>
+
+   <p>TR</p>
+   <!-- How to upload images -->
+   <div id="imgbox"></div>
+   <input type="file" accept="image/*" name="image" id="file" onchange="loadfile(event)"  style="display: none;" >
+   <label for="file">Upload</label>
+   <!-- ends HERE -->
+   <p>Trending movies</p>
+    <marquee behavior="" direction="left">
+        <img src="./rihanna.jfif" alt="My Feedback" >
+        <img src="./lil nas x.jfif" alt="run down" >
+        <img src="./waterdrops.jpg" alt="another one" style="height: 50px;width: 50px;">
+    </marquee>
+    <!-- The js for image upload -->
+    <script>
+        var imgbox = document.getElementById("imgbox")
+        var loadfile = function(event){
+            imgbox.style.backgroundImage = "url(" +URL.createObjectURL(event.target.files[0]) + ")"
+        }
+    </script>
+</body>
+</html>
