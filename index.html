@@ -8,29 +8,31 @@
     <title>Image-Uploader</title>
 </head>
 <body>
-    <header></header>
-    <div class="box">
-       <span id="upload"> Upload your image </span><br>
-        <span id="file">File should be jpeg, png...</span> <br>
-        <span id="drag">
-            <span id="drag2">
-                <img src="img/image.svg" alt="image icon">
-                Drag & Drop your image here</span>
-        </span> <br>
-        <span id="or">Or</span>
-        <input type="file" accept="image/*" name="image" id="filed" onchange="loadfile(event)"  style="display: none;" >
-        <label for="filed">Choose a file</label>
-        <div id="input"></div>
-        <label id="label" for="input">Copy</label>
+    <div id="main">
+        <div class="box">
+            <span id="upload"> Upload your image </span><br>
+             <span id="file">File should be jpeg, png...</span> <br>
+             <span id="drag">
+                 <span id="drag2">
+                     <img src="img/image.svg" alt="image icon">
+                     Drag & Drop your image here</span>
+             </span> <br>
+             <span id="or">Or</span>
+             <input type="file" accept="image/*" name="image" id="filed" onload="loadfile()" style="display: none;" >
+             <label id="choose" for="filed">Choose a file</label>
+             <div id="input"></div>
+             <label id="label" for="input">Copy</label>
+         </div>
+         <footer> Philip Joe Yakubu</footer>
+         <div id="bar"><span id="fbar">Uploading...</span></div>
+         <div id="myProgress">
+             <div id="myBar"></div>
+         </div>
     </div>
-    <footer> Philip Joe Yakubu</footer>
-    <div id="bar"><span id="fbar">Uploading...</span></div>
-    <div id="myProgress">
-        <div id="myBar"></div>
-    </div>
+    <script src="js/imageuploader.js"></script>
 </body>
 </html>
-<script>
+<!-- <script>
     var gone = document.getElementById("drag2");
     var drag = document.getElementById("drag");
     var bar = document.getElementById("bar");
@@ -74,4 +76,4 @@
         }
         
     };
-</script>
+</script> -->
