@@ -132,6 +132,7 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: scroll;
     border: 1px solid;
     border-radius: 8px;
     width: 600px;
@@ -139,6 +140,7 @@ footer{
     margin-top: 10px;
     background-color: peachpuff;
     display: none;
+    
 }
 #label{
     display: none;
