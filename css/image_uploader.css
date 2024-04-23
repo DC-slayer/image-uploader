@@ -133,6 +133,7 @@ footer{
     justify-content: center;
     align-items: center;
     overflow: scroll;
+    scrollbar-width: 1px;
     border: 1px solid;
     border-radius: 8px;
     width: 600px;
@@ -141,9 +142,6 @@ footer{
     background-color: peachpuff;
     display: none;
     
-}
-#input::-webkit-scrollbar{
-    display: none;
 }
 #label{
     display: none;
