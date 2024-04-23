@@ -142,6 +142,9 @@ footer{
     display: none;
     
 }
+#input::-webkit-scrollbar{
+    display: none;
+}
 #label{
     display: none;
     justify-self: center;
