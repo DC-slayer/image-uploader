@@ -5,8 +5,10 @@ let input = document.querySelector("#filed");
 var copyButton = document.querySelector("#label");
 var inp = document.getElementById("input");
 let file;
+
 button.onclick = () => {
   // input.click();
+  
 };
 
 copyButton.click();
@@ -21,18 +23,20 @@ input.addEventListener("change", function () {
   inp.style.display = "flex";
   inp.innerHTML = " " + URL.createObjectURL(file) + " ";
   console.log("no problem so far")
+  document.getElementById("label").addEventListener("click", function() {
+    var copyText = URL.createObjectURL(file);
+    navigator.clipboard.writeText(copyText)
+      .then(function() {
+        alert("Text copied to clipboard: " + copyText);
+      })
+      .catch(function(error) {
+        alert("Failed to copy text: " + error);
+      });
+  });
 });
-document.getElementById("label").addEventListener("click", function() {
-  var copyText = URL.createObjectURL(file);
 
-  navigator.clipboard.writeText(copyText)
-    .then(function() {
-      alert("Text copied to clipboard: " + copyText);
-    })
-    .catch(function(error) {
-      alert("Failed to copy text: " + error);
-    });
-});
+
+
 // when file is inside drag area
 dropArea.addEventListener("dragover", (event) => {
   event.preventDefault();
