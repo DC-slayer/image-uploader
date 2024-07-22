@@ -1,5 +1,6 @@
 const dropArea = document.querySelector("#drag");
 const dragText = document.querySelector("#drag2");
+const message = document.querySelector(".message")
 let button = document.querySelector("#choose");
 let input = document.querySelector("#filed");
 var copyButton = document.querySelector("#label");
@@ -18,6 +19,9 @@ input.addEventListener("change", function () {
   file = this.files[0];
   dropArea.classList.add("active");
   displayFile();
+  message.style.transition = "all, ease-in, 1s"
+  message.style.display = "grid"
+  console.log("successful1")
   copyButton.style.display = "flex";
   console.log("it's successful");
   inp.style.display = "flex";
@@ -35,7 +39,9 @@ input.addEventListener("change", function () {
   });
 });
 
-
+function func1(){
+  message.style.display = "none";
+}
 
 // when file is inside drag area
 dropArea.addEventListener("dragover", (event) => {
@@ -57,6 +63,7 @@ dropArea.addEventListener("drop", (event) => {
   file = event.dataTransfer.files[0]; // grab single file even of user selects multiple files
   // console.log(file);
   displayFile();
+    message.style.display = "grid"
   copyButton.style.display = "flex";
   console.log("it's successful");
   inp.style.display = "flex";

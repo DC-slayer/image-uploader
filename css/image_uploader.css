@@ -105,7 +105,34 @@ body{
     font-family: Poppins;
     margin-left: 87px;
 }
-#myProgress {
+.message{
+    background-color: white;
+    border: skyblue solid 2px;
+    border-radius: 20px;
+    font: x-large bolder;
+    padding-top: 50px;
+    font-family: Poppins;
+    margin-top: 200px;
+    width: 400px;
+    height: 200px;
+    z-index: 100;
+    display: none;
+    justify-content: center;
+    /* align-items: center; */
+}
+.okay{
+    height: 30px;
+    width: 150px;
+    color: white;
+    font-family: Poppins;
+    margin-left: 100px;
+    border: none;
+    border-radius: 5px;
+    background-color:dodgerblue;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+/* #myProgress {
     position: fixed;
     top: 343px;
     z-index: 100;
@@ -113,7 +140,7 @@ body{
     background-color: grey;
     border-radius: 10px;
     display: none;
-}
+} */
 
 #myBar {
     width: 1%;
@@ -159,6 +186,18 @@ footer{
 #label:hover{
     background-color: skyblue;
     color:blue;
+}
+.progress-bar {
+    background-color: #f0f0f0;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    background-color: #4caf50;
+    height: 100%;
+    width: 0; /* Initial width */
 }
 @media only screen and (max-width: 320px){
     body{
