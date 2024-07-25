@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="css/image_uploader.css">
     <link rel="icon" href="img/devchallenges.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
     <title>Image-Uploader</title>
 </head>
 <body>
@@ -12,24 +13,29 @@
         <div class="box">
             <span id="upload"> Upload your image </span><br>
              <span id="file">File should be jpeg, png...</span> <br>
+             <div id="overlay"></div>
              <span id="drag">
                  <span id="drag2">
                      <img src="img/image.svg" alt="image icon">
                      Drag & Drop your image here</span>
              </span> <br>
              <span id="or">Or</span>
-             <input type="file" accept="image/*" name="image" id="filed" onload="loadfile()" style="display: none;" >
+             <form id="form">
+                <input type="file" accept="image/*" name="image" id="filed" onload="loadfile()" style="display: none;" >
+             </form>
              <label id="choose" for="filed">Choose a file</label>
              <div id="input"></div>
-             <label id="label" for="input">Copy</label>
+             <button id="label" type="submit" for="input">Copy</buttpn>
          </div>
          <div class="message">
             Image uploaded successfully.
             <button onclick="func1()" class="okay">Okay</button>
          </div>
-         <div class="progress-bar">
-            <div class="progress"></div>
-        </div>
+        <!-- Progress bar -->
+<div id="prog">
+    <label id="prog-label" for="progress-bar">0%</label>
+    <progress id="progress-bar" value="0" max="100"></progress>
+</div>
          <footer> Philip Joe Yakubu</footer>
     </div>
     <script src="js/imageuploader.js"></script>

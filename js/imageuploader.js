@@ -1,6 +1,10 @@
 const dropArea = document.querySelector("#drag");
 const dragText = document.querySelector("#drag2");
-const message = document.querySelector(".message")
+const hide = document.getElementById("prog")
+const overlay = document.getElementById('overlay');
+const message = document.querySelector(".message");
+const form = document.getElementById('form');
+const bar = document.getElementById('progress-bar');
 let button = document.querySelector("#choose");
 let input = document.querySelector("#filed");
 var copyButton = document.querySelector("#label");
@@ -16,16 +20,15 @@ copyButton.click();
 
 // when browse
 input.addEventListener("change", function () {
-  file = this.files[0];
+  hide.style.display = "flex";
+  const formData = new FormData();
+  file = input.files[0];
+  formData.append('image', file);
   dropArea.classList.add("active");
-  displayFile();
-  message.style.transition = "all, ease-in, 1s"
-  message.style.display = "grid"
   console.log("successful1")
-  copyButton.style.display = "flex";
   console.log("it's successful");
-  inp.style.display = "flex";
   inp.innerHTML = " " + URL.createObjectURL(file) + " ";
+  formData.append('image', file);
   console.log("no problem so far")
   document.getElementById("label").addEventListener("click", function() {
     var copyText = URL.createObjectURL(file);
@@ -37,10 +40,39 @@ input.addEventListener("change", function () {
         alert("Failed to copy text: " + error);
       });
   });
+
+
+// Axios
+const config = {
+  onUploadProgress: function(progressEvent) {
+    const percentCompleted = Math.round((progressEvent.loaded / progressEvent.total)*100);
+   
+      bar.setAttribute('value', percentCompleted);
+      bar.previousElementSibling.textContent = `${percentCompleted}%`
+      if (percentCompleted === 100) {
+         setTimeout(() => {
+        document.getElementById("prog").style.display = "none";
+        displayFile();
+        overlay.style.display = 'block';
+        message.style.display = "grid"
+      }, 100);
+      inp.style.display = "flex";
+      copyButton.style.display = "flex";
+      }
+       // adjust the delay time as needed
+  }
+}
+
+axios.post('https://httpbin.org/post', formData, config)
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+
 });
+
 
 function func1(){
   message.style.display = "none";
+  overlay.style.display = "none"
 }
 
 // when file is inside drag area
@@ -60,13 +92,30 @@ dropArea.addEventListener("dragleave", () => {
 dropArea.addEventListener("drop", (event) => {
   event.preventDefault();
   // console.log('File is dropped in drag area');
+  const formData = new FormData();
   file = event.dataTransfer.files[0]; // grab single file even of user selects multiple files
   // console.log(file);
-  displayFile();
-    message.style.display = "grid"
-  copyButton.style.display = "flex";
+  const config = {
+    onUploadProgress: function(progressEvent) {
+      const percentCompleted = Math.round((progressEvent.loaded / progressEvent.total)*100);
+     
+        bar.setAttribute('value', percentCompleted);
+        bar.previousElementSibling.textContent = `${percentCompleted}%`
+        if (percentCompleted === 100) {
+           setTimeout(() => {
+          document.getElementById("prog").style.display = "none";
+          displayFile();
+          overlay.style.display = 'block';
+          message.style.display = "grid"
+        }, 100);
+        inp.style.display = "flex";
+        copyButton.style.display = "flex";
+        }
+         // adjust the delay time as needed
+    }
+  }
+
   console.log("it's successful");
-  inp.style.display = "flex";
   inp.innerHTML = " " + URL.createObjectURL(file) + " ";
   console.log("no problem so far")
   document.getElementById("label").addEventListener("click", function() {
@@ -80,7 +129,13 @@ dropArea.addEventListener("drop", (event) => {
         alert("Failed to copy text: " + error);
       });
   });
+
+  axios.post('https://httpbin.org/post', formData, config)
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+
 });
+
 function displayFile() {
   let fileType = file.type;
   // console.log(fileType);
