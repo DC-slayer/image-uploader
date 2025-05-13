@@ -1,0 +1,321 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+body{
+    font-family: 'Inter', sans-serif;
+    margin: 0px;
+}
+#top-header{
+    background-color: black;
+    color: white;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+}
+#sign_up{
+    text-decoration: none;
+    color: #000000;
+}
+#shopNow{
+    margin-left: 10px;
+    font-weight:bold;
+    text-decoration: underline;
+}
+#English{
+    position: relative;
+    left: 260px;
+    display: flex;
+    align-items: center;
+}
+#dropdown{
+    position: relative;
+    left: 5px;
+    font-weight: bold;
+}
+#header{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 80px;
+    border-bottom: solid 1px black;
+}
+#exclusive{
+    margin-left: 100px;
+    font-size: larger;
+    font-weight: bold;
+}
+#header nav{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+nav ul{
+    margin-right: 180px;
+}
+.header-list{
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+#home{
+    text-decoration: none;
+    color: #000000
+}
+#about{
+    color: #000000;
+    text-decoration: none;
+}
+#contact{
+    text-decoration: none;
+    color: #000000;
+}
+#header-icons{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+#item-input{
+    border: none;
+    width: 150px;
+    background-color: #F5F5F5;
+    font-size: 10px;
+}
+#form{
+    border: none;
+    border-radius: 2px;
+    background-color: #F5F5F5;
+    padding: 2px;
+    height: 20px;    
+    width: 180px;
+    display: flex;
+    gap: 1px;
+    justify-content: center;
+    align-items: center;
+}
+i{
+    font-weight: lighter;
+    opacity: 80%;
+}
+img{
+    width: 20px;
+}
+#main_section{
+    margin: 80px;
+}
+#section1{
+    margin-bottom: 80px;
+}
+#home_link{
+    opacity: 60%;
+}
+#product_details{
+    margin: 40px 20px 50px 50px;
+}
+.product_tab{
+    max-width: 100%;
+    margin-bottom: 30px;
+    height: 70px;
+    display: flex;
+    gap: 150px;
+    align-items: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    position: relative;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.middle1{
+    position: absolute;
+    left: 350px;
+    width: 100px;
+
+}
+.middle2{
+    position: absolute;
+    right: 300px;
+    width: 100px;
+}
+.end{
+    position: absolute;
+    right: 50px;
+    /* background-color: #F5F5F5; */
+    width: 100px;
+}
+.quantity_selector{
+    height: 30px;
+    width: 30px;
+    padding: 0px 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+#section3{
+    display: flex;
+    position: relative;
+    margin-left: 50px;
+    margin-right: 20px;
+}
+.button{
+    width: 150px;
+    height: 50px;
+    border: #000000 solid 1px;
+    font-size: small;
+    font-weight: 500;
+    background-color: white;
+    border-radius: 8px;
+    position: absolute;
+}
+.b_one{
+    left: 0px;
+}
+.b_two{
+    right: 0px;
+}
+#minor_section{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 70px;
+    padding-right: 50px;
+    margin-top: 40px;
+    margin-bottom: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+#C_code{
+    width: 200px;
+    height: 35px;
+    border-radius: 5px;
+    border: #000000 1px solid;
+    padding-left: 20px;
+}
+#coupon_button{
+    height: 40px;
+    width: 130px;
+    border-radius: 5px;
+    border: none;
+    background-color: #DB4444;
+    color: white;
+}
+#total_fee{
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    border: solid 2px black;
+    display: flex;
+    /* gap: 10px; */
+    align-items: center;
+    flex-direction: column;
+    /* justify-content: center; */
+    padding: 8px 5px;
+}
+#total_fee ul{
+    padding: 10px;
+}
+#C_total{
+    position: absolute;
+    top: 10px;
+    margin-top: 10px
+}
+.list_total{
+    list-style: none;
+    width: 350px;
+    border-bottom: solid 1px black;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+.first_total{
+    margin-top: 20px;
+}
+.last_total{
+    border-bottom: none;
+    padding-bottom: 0px;
+}
+#total_button{
+    height: 40px;
+    width: 250px;
+    border-radius: 5px;
+    border: none;
+    background-color: #DB4444;
+    color: white;
+    margin-bottom: 10px;
+}
+footer{
+    background-color: black;
+    color: white;
+    margin: 0px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    font-size: small;
+}
+footer div{
+    line-height: 30px;
+}
+footer div ul li{
+    list-style: none;
+    font-weight: 200;
+}
+#heading{
+    font-size: large;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.heading{
+    font-size: medium;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+#form2{
+    border: white solid 1px;
+    width: 170px;   
+    display: flex;
+    gap: 30px;
+    /* justify-content: center; */
+    align-items: center;
+}
+#input_email{
+    border: none;
+    background-color: #000000;
+    height: 30px;
+    max-width: 100px;
+    padding-left: 10px;
+}
+#small{
+    font-size: x-small;
+    font-weight: 100;
+}
+#app_details{
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+#qr_code{
+    height: 50px;
+    width: 50px;
+}
+#googleplay{
+    height: 30px;
+    width: 80px;
+}
+#appstore{
+    height: 30px;
+    width: 80px;
+}
+#app_link{
+    margin-bottom: 8px;
+    display: grid;
+}
+#social_handles{
+    display: flex;
+    gap: 20px;
+}
+#Copyright{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.4);
+    border-top: rgba(255, 255, 255, 0.4) 1px solid;
+    background-color: #000000;
+    font-weight: 300;
+    font-size: small;
+}

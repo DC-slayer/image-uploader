@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+    <book id="1" available="true">
+        <title>The Great Gatsby</title>
+        <publicationYear>1925</publicationYear>
+        <author>
+            <firstName>F. Scott</firstName>
+            <lastName>Fitzgerald</lastName>
+        </author>
+        <publisher>Charles Scribner’s Sons</publisher>
+        <pageCount>218</pageCount>
+    </book>
+    <book id="2" available="true">
+        <title>To Kill a Mockingbird</title>
+        <publicationYear>1960</publicationYear>
+        <author>
+            <firstName>Harper</firstName>
+            <lastName>Lee</lastName>
+        </author>
+        <publisher>J. B. Lippincott & Co</publisher>
+        <pageCount>281</pageCount>
+    </book>
+    <book id="3" available="false">
+        <title>1984</title>
+        <publicationYear>1949</publicationYear>
+        <author>
+            <firstName>George</firstName>
+            <lastName>Orwell</lastName>
+        </author>
+        <publisher>Secker & Warburg</publisher>
+        <pageCount>328</pageCount>
+    </book>
+</catalog>
+
+
+````
+THE JSON
+
+{
+    "books": [
+      {
+        "title": "The Great Gatsby",
+        "author": { "firstName": "F. Scott", "lastName": "Fitzgerald" },
+        "publicationYear": 1925,
+        "details": { "publisher": "Charles Scribner’s Sons", "pageCount": 218 },
+        "available": true
+      },
+      {
+        "title": "To Kill a Mockingbird",
+        "author": { "firstName": "Harper", "lastName": "Lee" },
+        "publicationYear": 1960,
+        "details": { "publisher": "J. B. Lippincott & Co", "pageCount": 281 },
+        "available": true
+      },
+      {
+        "title": "1984",
+        "author": { "firstName": "George", "lastName": "Orwell" },
+        "publicationYear": 1949,
+        "details": { "publisher": "Secker & Warburg", "pageCount": 328 },
+        "available": false
+      }
+    ]
+  }
+  
+
+  ````

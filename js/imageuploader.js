@@ -11,64 +11,97 @@ var copyButton = document.querySelector("#label");
 var inp = document.getElementById("input");
 let file;
 
-button.onclick = () => {
-  // input.click();
-  
-};
 
-copyButton.click();
-
-// when browse
-input.addEventListener("change", function () {
+input.addEventListener("change", function (e) {
+  e.preventDefault();
   hide.style.display = "flex";
-  const formData = new FormData();
   file = input.files[0];
-  formData.append('image', file);
   dropArea.classList.add("active");
   console.log("successful1")
   console.log("it's successful");
   inp.innerHTML = " " + URL.createObjectURL(file) + " ";
-  formData.append('image', file);
   console.log("no problem so far")
+  console.log(URL.createObjectURL(file))
   document.getElementById("label").addEventListener("click", function() {
     var copyText = URL.createObjectURL(file);
     navigator.clipboard.writeText(copyText)
       .then(function() {
         alert("Text copied to clipboard: " + copyText);
+        window.open('http://127.0.0.1:5500/html.html', '_blank');
       })
       .catch(function(error) {
         alert("Failed to copy text: " + error);
       });
   });
 
+  
+// Simulate the progress
+let progress = 0;
+const interval = setInterval(() => {
+  progress += 25; // Increase progress by 25% per interval
 
-// Axios
-const config = {
-  onUploadProgress: function(progressEvent) {
-    const percentCompleted = Math.round((progressEvent.loaded / progressEvent.total)*100);
-   
-      bar.setAttribute('value', percentCompleted);
-      bar.previousElementSibling.textContent = `${percentCompleted}%`
-      if (percentCompleted === 100) {
-         setTimeout(() => {
-        document.getElementById("prog").style.display = "none";
-        displayFile();
-        overlay.style.display = 'block';
-        message.style.display = "grid"
-      }, 100);
-      inp.style.display = "flex";
-      copyButton.style.display = "flex";
-      }
-       // adjust the delay time as needed
+  bar.setAttribute('value', progress);
+  bar.previousElementSibling.textContent = `${progress}%`;
+
+  if (progress >= 100) {
+    clearInterval(interval); // Stop when progress reaches 100%
+
+    setTimeout(() => {
+      document.getElementById("prog").style.display = "none";
+      displayFile();
+      
+      overlay.style.display = 'block';
+      message.style.display = "grid";
+      
+      // Transform the "Choose" button to an "Upload" button
+      button.textContent = "Upload"; // Change the text
+
+      // Remove existing 'for' attribute to prevent file selection
+      button.removeAttribute("for");
+
+      // Add a new click event for the upload functionality
+      button.onclick = uploadFile; 
+      
+    }, 500);
   }
+}, 500);
+
+// Define the uploadFile function
+function uploadFile() {
+  const file = input.files[0];
+  if (!file) {
+    alert("Please select a file first!");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("image", file);
+
+  fetch("http://localhost:7777/upload", { 
+    method: "POST",
+    body: formData,
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data && data.image) {
+        console.log("File uploaded successfully:", data);
+        alert("File uploaded successfully!");
+        console.log("Cloudinary Image URL:", data.image.imageUrl);
+} else{
+    console.error("Failed to upload image");
+    alert("Failed to upload image");
+}
+})
+    .catch(error => {
+      console.error("Error uploading file:", error);
+      alert("Error uploading file!");
+    });
 }
 
-axios.post('https://httpbin.org/post', formData, config)
-  .then(res => console.log(res))
-  .catch(err => console.log(err))
 
 });
 
+console.log(file);
 
 function func1(){
   message.style.display = "none";
@@ -148,7 +181,9 @@ function displayFile() {
       // console.log(fileURL);
       let imgTag = `<style>
       #drag{
-          background-image: url(${fileURL})
+          background-image: url(${fileURL});
+          background-position: center;
+          background-size: cover;
       }
   </style>`;
       dropArea.innerHTML = imgTag;

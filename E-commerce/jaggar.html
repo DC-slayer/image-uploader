@@ -1,0 +1,60 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Like Button Animation</title>
+  <style>
+    body{
+      max-width: 100vw;
+      overflow: hidden;
+    }
+    .like-button {
+      position: relative;
+      font-size: 20px;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .like-button:hover {
+      transform: scale(1.2);
+    }
+
+    .sparkles {
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      color: #ff9800;
+      animation: spark 0.5s ease-in-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes spark {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="like-button" onclick="triggerAnimation()">❤️ Like
+    <div id="sparkles" class="sparkles">✨</div>
+  </div>
+  <script>
+    function triggerAnimation() {
+      const sparkles = document.getElementById("sparkles");
+      sparkles.style.opacity = 1;
+      sparkles.style.animation = "spark 0.5s ease-in-out forwards";
+    }
+  </script>
+</body>
+</html> -->

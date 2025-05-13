@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore Inventory</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        .book {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .available {
+            color: green;
+            font-weight: bold;
+        }
+        .unavailable {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bookstore Inventory</h1>
+    
+    <div class="book">
+        <h2>The Great Gatsby</h2>
+        <p><strong>Author:</strong> F. Scott Fitzgerald</p>
+        <p><strong>Publication Year:</strong> 1925</p>
+        <p><strong>Publisher:</strong> Charles Scribner’s Sons</p>
+        <p><strong>Page Count:</strong> 218</p>
+        <p class="available">Available: Yes</p>
+    </div>
+    
+    <div class="book">
+        <h2>To Kill a Mockingbird</h2>
+        <p><strong>Author:</strong> Harper Lee</p>
+        <p><strong>Publication Year:</strong> 1960</p>
+        <p><strong>Publisher:</strong> J. B. Lippincott & Co</p>
+        <p><strong>Page Count:</strong> 281</p>
+        <p class="available">Available: Yes</p>
+    </div>
+    
+    <div class="book">
+        <h2>1984</h2>
+        <p><strong>Author:</strong> George Orwell</p>
+        <p><strong>Publication Year:</strong> 1949</p>
+        <p><strong>Publisher:</strong> Secker & Warburg</p>
+        <p><strong>Page Count:</strong> 328</p>
+        <p class="unavailable">Available: No</p>
+    </div>
+    <button onclick="loadJSON()">Load JSON Data</button>
+    <button onclick="loadXML()">Load XML Data</button>
+    <div id="bookstore"></div>
+</body>
+
+<script>
+    // Function to load JSON data
+function loadJSON() {
+    fetch("books.json") // Ensure books.json is in the same directory
+        .then(response => response.json())
+        .then(data => displayBooks(data.books))
+        .catch(error => console.error("Error loading JSON:", error));
+}
+
+// Function to load XML data
+// Function to load XML data
+function loadXML() {
+    fetch("books.xml")
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(data => {
+            let books = data.getElementsByTagName("book");
+            let bookArray = [];
+            
+            for (let book of books) {
+                let title = book.getElementsByTagName("title")[0]?.textContent || "Unknown Title";
+                let firstName = book.getElementsByTagName("firstName")[0]?.textContent || "Unknown";
+                let lastName = book.getElementsByTagName("lastName")[0]?.textContent || "Unknown";
+                let publicationYear = book.getElementsByTagName("publicationYear")[0]?.textContent || "N/A";
+                let publisher = book.getElementsByTagName("publisher")[0]?.textContent || "Unknown Publisher";
+                let pageCount = book.getElementsByTagName("pageCount")[0]?.textContent || "N/A";
+                let available = book.getAttribute("available") === "true";
+
+                bookArray.push({
+                    title: title,
+                    author: { firstName: firstName, lastName: lastName },
+                    publicationYear: publicationYear,
+                    details: { publisher: publisher, pageCount: pageCount },
+                    available: available
+                });
+            }
+            displayBooks(bookArray);
+        })
+        .catch(error => console.error("Error loading XML:", error));
+}
+
+// Function to display books in the HTML
+function displayBooks(books) {
+    let output = "<ul>";
+    books.forEach(book => {
+        output += `
+            <li>
+                <strong>${book.title}</strong><br>
+                Author: ${book.author.firstName} ${book.author.lastName}<br>
+                Year: ${book.publicationYear}<br>
+                Publisher: ${book.details.publisher}<br>
+                Pages: ${book.details.pageCount}<br>
+                Available: ${book.available ? "Yes" : "No"}
+            </li>
+            <hr>
+        `;
+    });
+    output += "</ul>";
+    document.getElementById("bookstore").innerHTML = output;
+}
+</script>
+</html>

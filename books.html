@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        /* Basic styling for page layout and task items */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 20px auto;
+            text-align: left;
+        }
+        /* Styling for completed tasks */
+        .task {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        #taskInput{
+            height: 20px;
+            width: 300px;
+        }
+        .task.completed span {
+            text-decoration: line-through;
+            color: grey;
+        }
+        /* Button styling */
+        .task button {
+            margin-left: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .task button.edit {
+            background-color: orange;
+        }
+        /* Styling for the add task button */
+        #addTaskBtn {
+            background-color: rgb(95, 200, 95);
+            color: white;
+            padding: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>To-Do List</h2>
+    <!-- Input field and button for adding new tasks -->
+    <input type="text" id="taskInput" placeholder="Enter new task">
+    <button id="addTaskBtn">Add Task</button>
+    <!-- Unordered list to hold tasks dynamically -->
+    <ul id="taskList"></ul>
+    <script>
+        // Event listener for adding a new task when button is clicked
+        document.getElementById('addTaskBtn').addEventListener('click', function() {
+            const taskText = document.getElementById('taskInput').value.trim();
+            if (taskText === '') return; // Prevent empty tasks from being added
+            addTask(taskText);
+            document.getElementById('taskInput').value = ''; // Clear input field after adding
+        });
+        
+        // Function to create and add a task to the list
+        function addTask(text) {
+            const li = document.createElement('li');
+            li.classList.add('task');
+            li.innerHTML = `
+                <input type="checkbox" class="toggle">
+                <span>${text}</span>
+                <button class="edit">Edit</button>
+                <button class="remove">Remove</button>
+            `;
+            document.getElementById('taskList').appendChild(li);
+        }
+
+        // Event delegation: Handling edit, remove, and complete actions
+        document.getElementById('taskList').addEventListener('click', function(event) {
+            const target = event.target;
+            const taskItem = target.closest('li'); // Get the closest <li> ancestor
+            if (!taskItem) return;
+            
+             // Remove task from the list
+            if (target.classList.contains('remove')) {
+                taskItem.remove();
+                // Edit task functionality
+            } else if (target.classList.contains('edit')) {
+                const newTask = prompt('Edit task:', taskItem.querySelector('span').innerText);
+                if (newTask !== null) {
+                    taskItem.querySelector('span').innerText = newTask.trim();
+                }
+                // Toggle task completion status
+            } else if (target.classList.contains('toggle')) {
+                taskItem.classList.toggle('completed');
+            }
+        });
+    </script>
+</body>
+</html>

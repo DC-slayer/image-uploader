@@ -6,10 +6,6 @@ const imageschema = mongoose.Schema({
         'type': String,
         require: true,
     },
-    "webkitRelativePath":{
-        'type': String,
-        require: true,
-    },
     "contentType":{
         'type': String,
         require: true,
@@ -23,7 +19,11 @@ const imageschema = mongoose.Schema({
         default: Date.now(),
         require: false,
         immutable: true,
-    }
+    },
+    imageUrl: { // Add this field for the Cloudinary image URL
+        type: String,
+        required: true,
+      }
 })
 
 const Images = mongoose.model('Images', imageschema);

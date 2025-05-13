@@ -79,10 +79,10 @@ body{
     align-self: center;
     justify-self: center;
 }
-#choose{
+.choose{
     display: flex;
     position: absolute;
-    /* left: 100px; */
+    left: 100px;
     justify-self: center;
     align-items: center;
     justify-content: center;
@@ -96,7 +96,7 @@ body{
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
-#choose:hover{
+.choose:hover{
     background-color: skyblue;
     color:blue;
 }
@@ -352,44 +352,55 @@ footer{
         
     }
     #main .box{
-        display: grid;
+        display: flex;
         justify-self: center;
         align-self: center;
-        margin-top: 20px;
+        margin-top: 5px;
         overflow: hidden;
     }
     .box{
-        height: 630px;
+        height: 550px;
         overflow: hidden;
         position: fixed;
         top: 10px;
+        margin: 5px;
     }
     #upload{
-        margin-top: 20px;
+        margin-top: 5px;
+        position: absolute;
+        top: 20px;
+    }
+    #file{
+        position: absolute;
+        top: 60px;
     }
     #drag{
         width:350px;
+        position: absolute;
+        bottom: 100px;
     }
     #drag2{
         display: grid;
         align-items: center;
         justify-content: center;
         font-size: small;
+        position: absolute;
+        bottom: 80px;
     }
     #label{
-        position: relative;
-        bottom: 40px;
+        position: absolute;
+        bottom: 10px;
         margin-bottom: 3px;
     }
     #or{
-        position: relative;
-        bottom: 30px;
+        position: absolute;
+        bottom: 60px;
         margin-top: 10px;
         margin-bottom: 5px;
     }
     #input{
-        position: relative;
-        bottom: 35px;
+        position: absolute;
+        bottom: 40px;
         width: 90%;
         margin: 10px 30px;
         padding: 2px 19px;
@@ -399,12 +410,13 @@ footer{
         text-overflow: ellipsis;
     }
     #choose{
-        position: relative;
+        position: absolute;
         bottom: 30px;
+        right: 100px;
     }
     footer{
         position: fixed;
-        bottom: 1px;
+        bottom: -1px;
     }
 }
 /* @media only screen and (min-width: 900px) {
