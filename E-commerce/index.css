@@ -565,9 +565,9 @@ img{
     justify-content: center;
     border-radius: 100%;
 }
-@keyframes #heart_icon1 {
+/* @keyframes #heart_icon1 {
     
-}
+} */
 .eye_icon{
     margin-top: 5px;
     height: 25px;
