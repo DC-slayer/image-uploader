@@ -63,6 +63,10 @@ body{
     
     
 }
+#image_icon{
+    width: 200px;
+    height: 200px;
+}
 #drag2{
     display: grid;
     justify-content: center;

@@ -22,12 +22,15 @@ input.addEventListener("change", function (e) {
   inp.innerHTML = " " + URL.createObjectURL(file) + " ";
   console.log("no problem so far")
   console.log(URL.createObjectURL(file))
+    console.log("it's successful");
+  inp.innerHTML = " " + URL.createObjectURL(file) + " ";
+  console.log("no problem so far")
   document.getElementById("label").addEventListener("click", function() {
     var copyText = URL.createObjectURL(file);
+  
     navigator.clipboard.writeText(copyText)
       .then(function() {
         alert("Text copied to clipboard: " + copyText);
-        window.open('http://127.0.0.1:5500/html.html', '_blank');
       })
       .catch(function(error) {
         alert("Failed to copy text: " + error);
@@ -87,6 +90,9 @@ function uploadFile() {
         console.log("File uploaded successfully:", data);
         alert("File uploaded successfully!");
         console.log("Cloudinary Image URL:", data.image.imageUrl);
+        inp.style.display = "flex";
+        copyButton.style.display = "flex";
+        document.getElementById("choose").style.display = "none";
 } else{
     console.error("Failed to upload image");
     alert("Failed to upload image");
@@ -143,6 +149,7 @@ dropArea.addEventListener("drop", (event) => {
         }, 100);
         inp.style.display = "flex";
         copyButton.style.display = "flex";
+        document.getElementById("choose").style.display = "none";
         }
          // adjust the delay time as needed
     }
